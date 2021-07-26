@@ -8,10 +8,14 @@ export function usePizza({ pizzas, inputs }) {
   };
 
   const removeFromOrder = (index) => {
-    setOrders({
-      ...orders.slice(0, index),
-      ...orders.slice(index + 1),
-    });
+    // console.log(index);
+    // const filterOrder  = orders.filter(item=> )
+    const filterData = [...orders];
+    filterData.splice(index, 1);
+    // console.log(filterData)
+    setOrders([
+      ...filterData
+    ]);
   };
 
   return {

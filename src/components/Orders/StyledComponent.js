@@ -37,11 +37,23 @@ export const PizzaMenuItems = styled.div`
   border-radius: 5px;
   border: 1px solid #1c1c1c;
   padding: 5px;
-  .gatsby-image-wrapper{
-      grid-row: span 2;
+  position: relative;
+  .gatsby-image-wrapper {
+    grid-row: span 2;
   }
-  h2{
-      font-size: 15px;
+  h2 {
+    font-size: 15px;
+  }
+
+  .remove {
+    background: none;
+    color: var(--red);
+    font-size: 3rem;
+    position: absolute;
+    top: 0;
+    right: -8px;
+    box-shadow: none;
+    line-height: 1rem;
   }
 `;
 

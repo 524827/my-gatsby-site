@@ -4,25 +4,29 @@ import Img from "gatsby-image";
 import useForm from "../../utils/useForm";
 import calculatePizzaPrice from "../../utils/calculatePizzaPrice";
 
+import formatMoney from "../../utils/formateMoney";
+import { usePizza } from "../../utils/usePizza";
+import PizzaOrder from "./components/PizzaOrder";
+import calculateOrderTotal from "../../utils/calculateOrderTotal";
 import {
   InfoContainer,
   OrderStyled,
   PizzaMenuItems,
   PizzaPriceButtons,
 } from "./StyledComponent";
-import formateMoney from "../../utils/formateMoney";
-import { usePizza } from "../../utils/usePizza";
-import PizzaOrder from "./components/PizzaOrder";
 
 const Orders = ({ data }) => {
   // debugger
-  const {values, updateValues} = useForm({
+  const { values, updateValues } = useForm({
     name: "",
     email: "",
   });
 
-  const {orders, addToOrder, removeFromOrder} = usePizza({pizzas: data.pizzas.nodes,inputs: values});
-
+  const { orders, addToOrder, removeFromOrder } = usePizza({
+    pizzas: data.pizzas.nodes,
+    inputs: values,
+  });
+  // console.log(orders);
   return (
     <OrderStyled>
       <fieldset>
@@ -58,9 +62,12 @@ const Orders = ({ data }) => {
               <PizzaPriceButtons>
                 {["S", "M", "L"].map((size) => {
                   return (
-                    <button type="button" onClick={()=>addToOrder({id: pizza.id, size})}>
-                      {size}{" "}
-                      {formateMoney(calculatePizzaPrice(pizza.price, size))}
+                    <button
+                      type="button"
+                      onClick={() => addToOrder({ id: pizza.id, size })}
+                    >
+                      {size}:{" "}
+                      {formatMoney(calculatePizzaPrice(pizza.price, size))}
                     </button>
                   );
                 })}
@@ -71,7 +78,17 @@ const Orders = ({ data }) => {
       </fieldset>
       <fieldset className="orders">
         <legend>Orders</legend>
-        <PizzaOrder order={orders}  pizzas={data.pizzas} removeFromOrder={removeFromOrder}/>
+        <PizzaOrder
+          order={orders}
+          pizzas={data.pizzas}
+          removeFromOrder={removeFromOrder}
+        />
+      </fieldset>
+      <fieldset>
+        <h3>Your Total is {formatMoney(calculateOrderTotal(orders, data.pizzas.nodes))}</h3>
+        <button type="submit" style={{width:'30%'}}>
+            {'Order Ahead'}
+          </button>
       </fieldset>
     </OrderStyled>
   );
