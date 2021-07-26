@@ -1,6 +1,5 @@
 import { navigate } from "gatsby-link";
 import * as React from "react";
-import Layout from "../components/Layout";
 
 import LoadingGrid from "../components/LoadingGrid";
 // import { Link } from "gatsby";
@@ -14,9 +13,7 @@ const IndexPage = () => {
 
   return (
     <>
-    <Layout>
-    <LoadingGrid count={10}/>
-    </Layout>
+     <LoadingGrid count={10}/>
     </>
   );
 };

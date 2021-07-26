@@ -2,7 +2,6 @@ import { graphql } from "gatsby";
 import React from "react";
 
 import styled from "styled-components";
-import Layout from "../components/Layout";
 import LoadingGrid from "../components/LoadingGrid";
 
 const CountryGrid = styled.div`
@@ -13,7 +12,7 @@ const CountryGrid = styled.div`
 
 const Country = ({ data }) => {
   return (
-    <Layout>
+    <>
       <CountryGrid>
         {data.country.media.flag ? (
           <img src={data.country.media.flag} alt={data.country.name} />
@@ -56,7 +55,7 @@ const Country = ({ data }) => {
           </ul> */}
         </div>
       </CountryGrid>
-    </Layout>
+    </>
   );
 };
 

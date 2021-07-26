@@ -5,7 +5,6 @@ import Img from "gatsby-image";
 import styled from "styled-components";
 import LoadingGrid from "../components/LoadingGrid";
 import SEO from "../components/SEO";
-import Layout from "../components/Layout";
 
 const PizzaGrid = styled.div`
   display: grid;
@@ -18,7 +17,7 @@ const SinglePizza = ({ data }) => {
   // debugger
   // console.log(data);
   return (
-    <Layout>
+    <>
       <SEO title={pizza.name} image={pizza.image?.fluid?.src}/>
       <PizzaGrid>
         {pizza.image.fluid ? (
@@ -36,7 +35,7 @@ const SinglePizza = ({ data }) => {
           </ul>
         </div>
       </PizzaGrid>
-    </Layout>
+    </>
   );
 };
 
