@@ -91,7 +91,7 @@ async function fetchCountriesAndTurnIntoNodes({
 }) {
   const res = await fetch("https://api.sampleapis.com/countries/countries");
   const countries = await res.json();
-
+  console.log(countries[0]);
   const nodeContent = JSON.stringify(countries);
   for (const country of countries) {
     const nodeMeta = {
