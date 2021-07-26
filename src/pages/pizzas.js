@@ -10,10 +10,16 @@ import SEO from "../components/SEO";
 
 const PizzasPage = ({ data, pageContext }) => {
   // console.log(pageContext);
-  const allPizzas = data.pizzas.edges;
+  const allPizzas = data.pizzas.nodes;
   return allPizzas ? (
     <>
-     <SEO title={pageContext?.topping ? `Pizzas with ${pageContext.topping}` : 'All pizzas'}/>
+      <SEO
+        title={
+          pageContext?.topping
+            ? `Pizzas with ${pageContext.topping}`
+            : "All pizzas"
+        }
+      />
       <ToppingsFilter />
       <PizzaList pizzasList={allPizzas} />
     </>
@@ -29,19 +35,17 @@ export const query = graphql`
     pizzas: allContentfulPizzas(
       filter: { toppings: { elemMatch: { name: { regex: $toppingRegex } } } }
     ) {
-      edges {
-        node {
+      nodes {
+        name
+        id
+        price
+        slug
+        toppings {
           name
-          id
-          price
-          slug
-          toppings {
-            name
-          }
-          image {
-            fluid(maxWidth: 400, cornerRadius: 10) {
-              ...GatsbyContentfulFluid
-            }
+        }
+        image {
+          fluid(maxWidth: 500, cornerRadius: 10) {
+            ...GatsbyContentfulFluid
           }
         }
       }

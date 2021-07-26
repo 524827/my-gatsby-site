@@ -136,7 +136,7 @@ async function turningCountriesIntoPages({ graphql, actions }) {
   //  );
 
    Array.from({ length: pageCount }).forEach((_, i) => {
-     console.log(`Creating page ${i}`);
+    //  console.log(`Creating page ${i}`);
      actions.createPage({
        path: `/countries/${i + 1}`,
        component: path.resolve('./src/pages/countries.js'),

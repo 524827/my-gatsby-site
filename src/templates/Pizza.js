@@ -52,7 +52,7 @@ export const query = graphql`
         vegetarian
       }
       image {
-        fluid {
+        fluid(cornerRadius: 10){
           ...GatsbyContentfulFluid
         }
       }

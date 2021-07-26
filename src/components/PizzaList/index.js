@@ -23,7 +23,7 @@ const PizzaList = ({ pizzasList }) => {
   return (
     <PizzaGridStyle>
       {pizzasList.map((item, index) => {
-        return <SinglePizza key={item.node.id} pizza={item.node} />;
+        return <SinglePizza key={item.id} pizza={item} />;
       })}
     </PizzaGridStyle>
   );
