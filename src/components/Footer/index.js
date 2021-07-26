@@ -1,12 +1,11 @@
 import React from 'react';
 
 
-
-const FooterPage = ()=>{
+const Footer = ()=>{
     return <footer>
         <p>&copy; Slicks Slices {new Date().getFullYear()}</p>
     </footer>
 }
 
 
-export default FooterPage;
+export default Footer;

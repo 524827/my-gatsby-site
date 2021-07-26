@@ -1,7 +1,7 @@
 // import { Typography } from "@material-ui/core";
 import React from "react";
 
-import Footer from "../../pages/footer";
+import Footer from "../Footer";
 import GlobalStyles from "../../styles/GlobalStyles";
 import Typography from "../../styles/Typography";
 import Navigation from "../Navigation";
@@ -14,7 +14,6 @@ const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyles />
-
       <Typography />
       <SiteBorderStyle>
         <ContentStyles>

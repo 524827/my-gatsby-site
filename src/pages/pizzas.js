@@ -7,18 +7,27 @@ import PizzaList from "../components/PizzaList";
 import ToppingsFilter from "../components/ToppingsFilter";
 import LoadingGrid from "../components/LoadingGrid";
 import SEO from "../components/SEO";
+import Layout from "../components/Layout";
 
 const PizzasPage = ({ data, pageContext }) => {
   // console.log(pageContext);
   const allPizzas = data.pizzas.edges;
   return allPizzas ? (
-    <>
-    <SEO title={pageContext?.topping ? `Pizzas with ${pageContext.topping}` : 'All pizzas'}/>
+    <Layout>
+      <SEO
+        title={
+          pageContext?.topping
+            ? `Pizzas with ${pageContext.topping}`
+            : "All pizzas"
+        }
+      />
       <ToppingsFilter />
       <PizzaList pizzasList={allPizzas} />
-    </>
+    </Layout>
   ) : (
-    <LoadingGrid count={10} />
+    <Layout>
+      <LoadingGrid count={10} />
+    </Layout>
   );
 };
 
